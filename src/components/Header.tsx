@@ -1,23 +1,34 @@
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type HeaderProps = {
     title: string
     description?: string
     className?: string
+    titleClassName?: string
+    descriptionClassName?: string
 }
 
 export const Header: React.FC<HeaderProps> = ({
     title,
     description,
-    className = "",
+    className = '',
+    titleClassName = '',
+    descriptionClassName = '',
 }) => {
     return (
         <header
-            className={`header ${className ? className : ''}`}
+            className={twMerge('header', className)}
             aria-labelledby="site-title site-description"
         >
-            <h1 id="site-title">{title}</h1>
-            {description && <p id="site-description">{description}</p>}
+            <h1 className={titleClassName} id="site-title">
+                {title}
+            </h1>
+            {description && (
+                <p className={descriptionClassName} id="site-description">
+                    {description}
+                </p>
+            )}
         </header>
     )
 }

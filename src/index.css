@@ -1,1 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+    --font-display: 'Arial', 'sans-serif';
+    --color-cream: #faf3e0;
+}
+body {
+    background-color: var(--color-cream);
+    font-family: var(--color-black), serif;
+}
