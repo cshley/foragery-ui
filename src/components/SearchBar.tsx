@@ -1,32 +1,39 @@
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type SearchBarProps = {
+    onChange: (value: React.ChangeEvent<HTMLInputElement>) => void
     ariaLabel?: string
     placeholder?: string
     labelClassName?: string
     inputClassName?: string
-    onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void
     searchQuery?: string
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({
-    placeholder = 'Search...',
-    labelClassName = '',
-    inputClassName = '',
     onChange,
-    ariaLabel = 'Search',
+    placeholder = 'Search Plants...',
+    inputClassName = '',
+    ariaLabel = 'search',
     searchQuery = '',
 }: SearchBarProps) => {
     return (
-        <>
-            <label className={labelClassName} htmlFor={ariaLabel}>
-                <input
-                    value={searchQuery}
-                    className={inputClassName}
-                    onChange={onChange}
-                    placeholder={placeholder}
-                ></input>
+        <div className="p-1">
+            <label htmlFor={ariaLabel} className="sr-only">
+                Search for a plant
             </label>
-        </>
+            <input
+                id={ariaLabel}
+                type="text"
+                role="searchbox"
+                value={searchQuery}
+                className={twMerge(
+                    inputClassName,
+                    'p-1 border-2 border-black focus:outline-none'
+                )}
+                onChange={onChange}
+                placeholder={placeholder}
+            ></input>
+        </div>
     )
 }

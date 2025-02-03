@@ -11,18 +11,19 @@ export const CardList: React.FC<CardListProps> = ({
     cards,
     layout = 'grid',
 }) => {
-    const containerClass =
+    const containerClassName =
         layout === 'grid'
-            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
-            : 'flex flex-col space-y-4'
+            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-4'
+            : 'flex flex-col space-y-4 py-4'
 
     return (
-        <div className={containerClass}>
+        <div className={containerClassName}>
             {cards.map((card: CardData) => (
                 <Card
                     key={card.id}
                     title={card.title}
                     description={card.description}
+                    cardClassName="border-2 border-black"
                 />
             ))}
         </div>
