@@ -3,7 +3,6 @@ import { Card } from './Card.tsx'
 import { CardData, CardListProps } from './CardTypes.ts'
 import { NoResultsMessage } from '../../components/ui/NoResultsMessage.tsx'
 
-
 export const CardList: React.FC<CardListProps> = ({
     cards,
     layout = 'grid',
@@ -14,7 +13,7 @@ export const CardList: React.FC<CardListProps> = ({
             : 'flex flex-col space-y-4 py-4'
 
     return cards.length === 0 ? (
-        <NoResultsMessage message={"No plants found."} />
+        <NoResultsMessage message={'No plants found.'} />
     ) : (
         <div className={containerClassName}>
             {cards.map((card: CardData) => (

@@ -8,14 +8,14 @@ import { AppDispatch } from '../../stores/store.ts'
 
 export const useFetchMockCardData = () => {
     // const { setPlantData } = useZustandStore()
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useDispatch<AppDispatch>()
 
     return useQuery({
         queryKey: ['cards'],
         queryFn: async () => {
             const data = await fetchMockCardData()
             // setPlantData(data)
-            dispatch(setCards(data));
+            dispatch(setCards(data))
             return data
         },
     })
