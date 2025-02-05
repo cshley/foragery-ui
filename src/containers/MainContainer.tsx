@@ -1,15 +1,25 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+//import { useZustandStore } from '../stores/zustandStore.ts'
 
-import { Header } from '../components/Header.tsx'
-import { SearchBar } from '../components/SearchBar.tsx'
-import { CardList } from '../components/CardList.tsx'
+import { Header } from '../components/ui/Header.tsx'
+import { SearchBar } from '../components/ui/SearchBar.tsx'
+import { CardList } from '../features/Cards/CardList.tsx'
+import { useFetchMockCardData } from '../features/Cards/hooks.ts'
+import { selectFilteredCards, selectSearchQuery } from '../features/Cards/filteredCardsSelector.ts'
 
-import { usePlantStore } from '../stores/plantStore.ts'
-import { useFetchMockPlantData } from '../hooks/useFetchMockPlantData.ts'
+import { AppDispatch } from '../stores/store.ts'
+import { CardData } from '../features/Cards/CardTypes.ts'
+import { setSearchQuery } from '../features/Cards/cardSlice.ts'
 
 export const MainContainer: React.FC = () => {
-    const { filteredCardList, searchQuery, setSearchQuery } = usePlantStore()
-    const { isLoading } = useFetchMockPlantData()
+    // const { filteredCardList, searchQuery, setSearchQuery } = useZustandStore()
+    const dispatch = useDispatch<AppDispatch>();
+
+    const filteredCards: CardData[] = useSelector(selectFilteredCards);
+    const searchQuery: string = useSelector(selectSearchQuery);
+
+    const { isLoading } = useFetchMockCardData()
 
     return (
         <div className="container mx-auto w-1/2">
@@ -23,13 +33,13 @@ export const MainContainer: React.FC = () => {
                 searchQuery={searchQuery}
                 labelClassName="m-2"
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    setSearchQuery(event.target.value)
+                    dispatch(setSearchQuery(event.target.value))
                 }
             />
             {isLoading ? (
                 <p className="text-center p-4">Loading plants...</p>
             ) : (
-                <CardList cards={filteredCardList} />
+                <CardList cards={filteredCards} />
             )}
         </div>
     )

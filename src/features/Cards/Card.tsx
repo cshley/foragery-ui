@@ -1,13 +1,7 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
-type CardProps = {
-    title?: string
-    description?: string
-    cardClassName?: string
-    titleClassName?: string
-    descriptionClassName?: string
-}
+import { CardProps } from './CardTypes.ts'
 
 export const Card: React.FC<CardProps> = ({
     title,

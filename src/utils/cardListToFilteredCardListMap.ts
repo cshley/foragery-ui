@@ -1,4 +1,4 @@
-import { CardData } from '../types/CardData.ts'
+import { CardData } from '../features/Cards/CardTypes.ts'
 
 export const cardListToFilteredCardListMap = (
     cardList: CardData[],
