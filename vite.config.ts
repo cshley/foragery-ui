@@ -6,4 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
     plugins: [react(), tailwindcss()],
     base: '/foragery-ui/',
+    build: {
+        outDir: 'dist',  // Ensures correct output folder
+    }
 })
