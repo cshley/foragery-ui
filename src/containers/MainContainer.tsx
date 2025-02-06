@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 //import { useZustandStore } from '../stores/zustandStore.ts'
 
 import { Header } from '../components/ui/Header.tsx'
-import { SearchBar } from '../components/ui/SearchBar.tsx'
+import { SearchBar } from '../features/SearchBar/SearchBar.tsx'
 import { CardList } from '../features/Cards/CardList.tsx'
 import { useFetchMockCardData } from '../features/Cards/hooks.ts'
 import {
@@ -34,10 +34,7 @@ export const MainContainer: React.FC = () => {
             />
             <SearchBar
                 searchQuery={searchQuery}
-                labelClassName="m-2"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    dispatch(setSearchQuery(event.target.value))
-                }
+                onUserInput={(value: string) => dispatch(setSearchQuery(value))}
             />
             {isLoading ? (
                 <p className="text-center p-4">Loading plants...</p>
