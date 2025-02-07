@@ -14,6 +14,7 @@ import {
 import { AppDispatch } from '../stores/store.ts'
 import { CardData } from '../features/Cards/CardTypes.ts'
 import { setSearchQuery } from '../features/Cards/cardSlice.ts'
+import { Version } from '../features/Version/Version.tsx'
 
 export const MainContainer: React.FC = () => {
     // const { filteredCardList, searchQuery, setSearchQuery } = useZustandStore()
@@ -41,6 +42,7 @@ export const MainContainer: React.FC = () => {
             ) : (
                 <CardList cards={filteredCards} />
             )}
+            <Version/>
         </div>
     )
 }

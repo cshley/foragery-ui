@@ -4,7 +4,7 @@ import { useDebouncedValue as useDebouncedValueHook } from './useDebouncedValue.
 
 type SearchBarProps = {
     onUserInput: (value: string) => void
-    useDebouncedValue?: (value: string, delay?: number) => string,
+    useDebouncedValue?: (value: string, delay?: number) => string
     placeholder?: string
     inputClassName?: string
     searchQuery?: string
