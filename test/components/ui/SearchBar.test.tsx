@@ -5,7 +5,6 @@ import { describe, it, expect, vi } from 'vitest'
 
 import { SearchBar } from '../../../src/features/SearchBar/SearchBar.tsx'
 
-
 describe('SearchBar', () => {
     const handleChange = vi.fn()
 
@@ -66,13 +65,13 @@ describe('SearchBar', () => {
 
         // User input
         await act(async () => {
-            fireEvent.change(element, { target: { value: 't' } });
-            fireEvent.change(element, { target: { value: 'th' } });
-            fireEvent.change(element, { target: { value: 'thyme' } });
+            fireEvent.change(element, { target: { value: 't' } })
+            fireEvent.change(element, { target: { value: 'th' } })
+            fireEvent.change(element, { target: { value: 'thyme' } })
 
-            const defaultDebounceDelayMs = 300;
-            vi.advanceTimersByTime(defaultDebounceDelayMs);
-        });
+            const defaultDebounceDelayMs = 300
+            vi.advanceTimersByTime(defaultDebounceDelayMs)
+        })
 
         expect(handleChange).toHaveBeenCalledTimes(1)
         expect(handleChange).toHaveBeenCalledWith('thyme')

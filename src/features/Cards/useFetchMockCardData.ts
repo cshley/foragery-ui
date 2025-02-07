@@ -6,6 +6,8 @@ import { setCards } from './cardSlice.ts'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../stores/store.ts'
 
+// Custom hook fetching "api data"
+
 export const useFetchMockCardData = () => {
     // const { setPlantData } = useZustandStore()
     const dispatch = useDispatch<AppDispatch>()

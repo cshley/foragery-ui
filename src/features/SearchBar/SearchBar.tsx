@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { useDebouncedValue } from './useDebounce.ts'
+import { useDebouncedValue as useDebouncedValueHook } from './useDebouncedValue.ts'
 
 type SearchBarProps = {
     onUserInput: (value: string) => void
+    useDebouncedValue?: (value: string, delay?: number) => string,
     placeholder?: string
     inputClassName?: string
     searchQuery?: string
@@ -11,6 +12,7 @@ type SearchBarProps = {
 
 export const SearchBar: React.FC<SearchBarProps> = ({
     onUserInput,
+    useDebouncedValue = useDebouncedValueHook,
     placeholder = 'Search Plants...',
     inputClassName = '',
     searchQuery = '',

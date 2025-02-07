@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Header } from '../components/ui/Header.tsx'
 import { SearchBar } from '../features/SearchBar/SearchBar.tsx'
 import { CardList } from '../features/Cards/CardList.tsx'
-import { useFetchMockCardData } from '../features/Cards/hooks.ts'
+import { useFetchMockCardData } from '../features/Cards/useFetchMockCardData.ts'
 import {
     selectFilteredCards,
     selectSearchQuery,
