@@ -1,13 +1,13 @@
-import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
 type HeaderProps = {
-    title: string
-    description?: string
-    className?: string
-    titleClassName?: string
-    descriptionClassName?: string
-}
+    title: string;
+    description?: string;
+    className?: string;
+    titleClassName?: string;
+    descriptionClassName?: string;
+};
 
 export const Header: React.FC<HeaderProps> = ({
     title,
@@ -30,5 +30,5 @@ export const Header: React.FC<HeaderProps> = ({
                 </p>
             )}
         </header>
-    )
-}
+    );
+};

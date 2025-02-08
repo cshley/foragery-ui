@@ -1,4 +1,4 @@
-import { CardData } from './CardTypes.ts'
+import { CardData } from './CardTypes.ts';
 
 const mockCardList: CardData[] = [
     {
@@ -89,12 +89,12 @@ const mockCardList: CardData[] = [
         description:
             'Cooked leaves are edible; used traditionally to treat arthritis and anemia.',
     },
-]
+];
 
 export const fetchMockCardData = (): Promise<CardData[]> => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(mockCardList)
-        }, 2000)
-    })
-}
+            resolve(mockCardList);
+        }, 2000);
+    });
+};

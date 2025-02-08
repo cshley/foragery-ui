@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { useDebouncedValue as useDebouncedValueHook } from './useDebouncedValue.ts'
+import React, { useEffect, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-type SearchBarProps = {
-    onUserInput: (value: string) => void
-    useDebouncedValue?: (value: string, delay?: number) => string
-    placeholder?: string
-    inputClassName?: string
-    searchQuery?: string
-}
+import { useDebouncedValue as useDebouncedValueHook } from './useDebouncedValue.ts';
+
+import { SearchBarProps } from './SearchBarTypes.ts';
 
 export const SearchBar: React.FC<SearchBarProps> = ({
     onUserInput,
@@ -17,17 +12,17 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     inputClassName = '',
     searchQuery = '',
 }: SearchBarProps) => {
-    const [query, setQuery] = useState(searchQuery)
+    const [query, setQuery] = useState(searchQuery);
 
-    const debouncedQuery: string = useDebouncedValue(query)
+    const debouncedQuery: string = useDebouncedValue(query);
 
     useEffect(() => {
         // Prevents firing on mount
         if (debouncedQuery !== searchQuery) {
             // Dispatch debounced user input string to redux store
-            onUserInput(debouncedQuery)
+            onUserInput(debouncedQuery);
         }
-    }, [debouncedQuery, onUserInput, searchQuery])
+    }, [debouncedQuery, onUserInput, searchQuery]);
 
     return (
         <div className="p-1" data-testid="search-bar">
@@ -52,5 +47,5 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                 data-testid="search-bar-input"
             ></input>
         </div>
-    )
-}
+    );
+};

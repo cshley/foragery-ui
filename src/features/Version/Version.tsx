@@ -1,10 +1,13 @@
-import { useVersion } from './useVersion.ts'
+import React from 'react';
 
-export const Version = () => {
-    const version = useVersion()
+import { VersionProps } from './VersionTypes.ts';
+
+export const Version: React.FC<VersionProps> = ({
+    releaseVersion,
+}: VersionProps) => {
     return (
         <>
-            <p>{version || 'Loading...'}</p>
+            <p>{releaseVersion || 'Loading...'}</p>
         </>
-    )
-}
+    );
+};

@@ -1,29 +1,31 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 //import { useZustandStore } from '../stores/zustandStore.ts'
 
-import { Header } from '../components/ui/Header.tsx'
-import { SearchBar } from '../features/SearchBar/SearchBar.tsx'
-import { CardList } from '../features/Cards/CardList.tsx'
-import { useFetchMockCardData } from '../features/Cards/useFetchMockCardData.ts'
+import { Header } from '../components/ui/Header.tsx';
+import { SearchBar } from '../features/SearchBar/SearchBar.tsx';
+import { CardList } from '../features/Cards/CardList.tsx';
+import { Footer } from '../components/ui/Footer.tsx';
+import { useFetchMockCardData } from '../features/Cards/useFetchMockCardData.ts';
 import {
     selectFilteredCards,
     selectSearchQuery,
-} from '../features/Cards/filteredCardsSelector.ts'
+} from '../features/Cards/filteredCardsSelector.ts';
+import { useVersion } from '../features/Version/useVersion.ts';
+import { setSearchQuery } from '../features/Cards/cardSlice.ts';
 
-import { AppDispatch } from '../stores/store.ts'
-import { CardData } from '../features/Cards/CardTypes.ts'
-import { setSearchQuery } from '../features/Cards/cardSlice.ts'
-import { Version } from '../features/Version/Version.tsx'
+import { AppDispatch } from '../stores/store.ts';
+import { CardData } from '../features/Cards/CardTypes.ts';
 
 export const MainContainer: React.FC = () => {
     // const { filteredCardList, searchQuery, setSearchQuery } = useZustandStore()
-    const dispatch = useDispatch<AppDispatch>()
+    const dispatch = useDispatch<AppDispatch>();
 
-    const filteredCards: CardData[] = useSelector(selectFilteredCards)
-    const searchQuery: string = useSelector(selectSearchQuery)
+    const filteredCards: CardData[] = useSelector(selectFilteredCards);
+    const searchQuery: string = useSelector(selectSearchQuery);
 
-    const { isLoading } = useFetchMockCardData()
+    const { isLoading } = useFetchMockCardData();
+    const version: string = useVersion();
 
     return (
         <div className="container mx-auto w-1/2">
@@ -42,7 +44,7 @@ export const MainContainer: React.FC = () => {
             ) : (
                 <CardList cards={filteredCards} />
             )}
-            <Version/>
+            <Footer version={version} />
         </div>
-    )
-}
+    );
+};

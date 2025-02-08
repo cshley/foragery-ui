@@ -1,7 +1,7 @@
-import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import React from 'react';
+import { twMerge } from 'tailwind-merge';
 
-import { CardProps } from './CardTypes.ts'
+import { CardProps } from './CardTypes.ts';
 
 export const Card: React.FC<CardProps> = ({
     title,
@@ -24,5 +24,5 @@ export const Card: React.FC<CardProps> = ({
                 {description}
             </p>
         </div>
-    )
-}
+    );
+};

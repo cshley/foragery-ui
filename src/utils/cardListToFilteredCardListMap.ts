@@ -1,11 +1,11 @@
-import { CardData } from '../features/Cards/CardTypes.ts'
+import { CardData } from '../features/Cards/CardTypes.ts';
 
 export const cardListToFilteredCardListMap = (
     cardList: CardData[],
     searchQuery: string
 ): CardData[] => {
     if (!searchQuery) {
-        return cardList
+        return cardList;
     } else {
         return cardList.filter(
             (card: CardData) =>
@@ -13,6 +13,6 @@ export const cardListToFilteredCardListMap = (
                 card.description
                     ?.toLowerCase()
                     .includes(searchQuery.toLowerCase())
-        )
+        );
     }
-}
+};

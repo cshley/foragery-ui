@@ -1,13 +1,11 @@
-import { MainContainer } from './containers/MainContainer.tsx'
-import { Footer } from './components/ui/Footer.tsx'
+import { MainContainer } from './containers/MainContainer.tsx';
 
 function App() {
     return (
         <>
             <MainContainer />
-            <Footer />
         </>
-    )
+    );
 }
 
-export default App
+export default App;
