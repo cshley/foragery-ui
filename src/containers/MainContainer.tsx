@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-//import { useZustandStore } from '../stores/zustandStore.ts'
 
 import { Header } from '../components/ui/Header.tsx';
 import { SearchBar } from '../features/SearchBar/SearchBar.tsx';
@@ -14,13 +13,11 @@ import {
 import { useVersion } from '../features/Version/useVersion.ts';
 import { setSearchQuery } from '../features/Cards/cardSlice.ts';
 
-import { AppDispatch } from '../stores/store.ts';
+import { AppDispatch } from '../store/store.ts';
 import { CardData } from '../features/Cards/CardTypes.ts';
 
 export const MainContainer: React.FC = () => {
-    // const { filteredCardList, searchQuery, setSearchQuery } = useZustandStore()
     const dispatch = useDispatch<AppDispatch>();
-
     const filteredCards: CardData[] = useSelector(selectFilteredCards);
     const searchQuery: string = useSelector(selectSearchQuery);
 

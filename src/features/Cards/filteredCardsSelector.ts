@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 
 import { cardListToFilteredCardListMap } from '../../utils/cardListToFilteredCardListMap.ts';
 
-import { RootState } from '../../stores/store.ts';
+import { RootState } from '../../store/store.ts';
 import { CardData } from './CardTypes.ts';
 
 export const selectSearchQuery = (state: RootState): string =>
