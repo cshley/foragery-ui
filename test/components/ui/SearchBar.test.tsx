@@ -17,7 +17,7 @@ describe('SearchBar', () => {
         render(
             <SearchBar
                 onUserInput={handleChange}
-                inputClassName={'testInputClassName'}
+                inputClassName={inputClassName}
             />
         );
         const element: HTMLElement = screen.getByTestId('search-bar');
@@ -30,7 +30,7 @@ describe('SearchBar', () => {
         render(
             <SearchBar
                 onUserInput={handleChange}
-                inputClassName={'testInputClassName'}
+                inputClassName={inputClassName}
             />
         );
         const element: HTMLElement = screen.getByTestId('search-bar-label');
@@ -44,7 +44,7 @@ describe('SearchBar', () => {
         render(
             <SearchBar
                 onUserInput={handleChange}
-                inputClassName={'testInputClassName'}
+                inputClassName={inputClassName}
             />
         );
         const element: HTMLElement = screen.getByTestId('search-bar-input');
@@ -79,7 +79,7 @@ describe('SearchBar', () => {
         vi.useRealTimers();
     });
 
-    it('SearchBar component should have no accessibility violations', async () => {
+    it('should have no accessibility violations', async () => {
         const { container } = render(<SearchBar onUserInput={handleChange} />);
         const results = await axe(container);
         expect(results.violations).toEqual([]);

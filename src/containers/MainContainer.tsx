@@ -25,22 +25,24 @@ export const MainContainer: React.FC = () => {
     const version: string = useVersion();
 
     return (
-        <div className="container mx-auto w-1/2">
+        <div className="flex flex-col min-h-screen w-1/2 mx-auto">
             <Header
                 title="foragery"
                 description="Your Trusted Companion for Edible Plants."
                 titleClassName="text-5xl font-bold leading-relaxed"
                 descriptionClassName="text-lg leading-relaxed"
             />
-            <SearchBar
-                searchQuery={searchQuery}
-                onUserInput={(value: string) => dispatch(setSearchQuery(value))}
-            />
-            {isLoading ? (
-                <p className="text-center p-4">Loading plants...</p>
-            ) : (
-                <CardList cards={filteredCards} />
-            )}
+            <main className={"flex-grow"}>
+                <SearchBar
+                    searchQuery={searchQuery}
+                    onUserInput={(value: string) => dispatch(setSearchQuery(value))}
+                />
+                {isLoading ? (
+                    <p className="text-center p-4">Loading plants...</p>
+                ) : (
+                    <CardList cards={filteredCards} />
+                )}
+            </main>
             <Footer version={version} />
         </div>
     );

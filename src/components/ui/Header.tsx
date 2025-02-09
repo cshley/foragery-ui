@@ -15,7 +15,7 @@ export const Header: React.FC<HeaderProps> = ({
     className = '',
     titleClassName = '',
     descriptionClassName = '',
-}) => {
+}: HeaderProps) => {
     return (
         <header
             className={twMerge('header', className)}

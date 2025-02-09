@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
 
-export const useDebouncedValue = (value: string, delay = 300): string => {
+// Custom hook returns the debounced value after delay.
+export const useDebouncedValue = (value: string, delayMs = 300): string => {
     const [debouncedValue, setDebouncedValue] = useState(value);
 
     useEffect(() => {
-        const handler = setTimeout(() => {
+        const handler: number = setTimeout(() => {
             setDebouncedValue(value);
-        }, delay);
+        }, delayMs);
 
+        // Clean-up
         return () => {
             clearTimeout(handler);
         };
-    }, [value, delay]);
+    }, [value, delayMs]);
 
     return debouncedValue;
 };

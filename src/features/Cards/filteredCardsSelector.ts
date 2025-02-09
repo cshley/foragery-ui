@@ -7,6 +7,7 @@ import { CardData } from './CardTypes.ts';
 
 export const selectSearchQuery = (state: RootState): string =>
     state.cards.searchQuery;
+
 export const selectCards = (state: RootState): CardData[] => state.cards.cards;
 
 export const selectFilteredCards = createSelector(

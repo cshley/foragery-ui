@@ -5,6 +5,7 @@ import { fetchMockCardData } from './mockCardDataApi.ts';
 import { setCards } from './cardSlice.ts';
 
 import { AppDispatch } from '../../store/store.ts';
+import { CardData } from './CardTypes.ts';
 
 // Custom hook fetching "api data"
 export const useFetchMockCardData = () => {
@@ -13,7 +14,7 @@ export const useFetchMockCardData = () => {
     return useQuery({
         queryKey: ['cards'],
         queryFn: async () => {
-            const data = await fetchMockCardData();
+            const data: CardData[] = await fetchMockCardData();
             dispatch(setCards(data));
             return data;
         },
