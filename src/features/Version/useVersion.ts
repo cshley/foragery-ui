@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 export const useVersion = (): string => {
-    const [version, setVersion] = useState<string>('');
+    const basePath: string = import.meta.env.BASE_URL || '/';
 
-    useEffect(() => {
-        const basePath = import.meta.env.BASE_URL || '/';
-        fetch(`${basePath}version.txt`)
-            .then((res) => res.text())
-            .then((data) => setVersion(data.trim()))
-            .catch(() => setVersion('Unknown'));
-    }, []);
+    const fetchVersion = async (): Promise<string> => {
+        const response: Response = await fetch(`${basePath}version.txt`);
+        return !response.ok ? 'Unknown' : response.text();
+    };
 
-    return version;
+    const { data = 'Unknown' } = useQuery({
+        queryKey: ['version'],
+        queryFn: fetchVersion,
+        retry: false,
+    });
+// TODO: Dispatch version to store
+    return data.trim();
 };
