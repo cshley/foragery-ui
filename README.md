@@ -11,6 +11,7 @@ This project is both a personal learning journey and a resource for others who s
 Whether you're looking for new plants to grow or simply want to expand your knowledge, foragery provides a structured way to discover and explore useful plants.
 
 ### Note
+
 This is a prototype version of foragery's UI.
 
 ### Initial Main Page Wireframe (WIP)

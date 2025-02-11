@@ -13,6 +13,6 @@ export const useVersion = (): string => {
         queryFn: fetchVersion,
         retry: false,
     });
-// TODO: Dispatch version to store
+    // TODO: Dispatch version to store
     return data.trim();
 };

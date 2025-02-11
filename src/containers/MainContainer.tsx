@@ -32,10 +32,12 @@ export const MainContainer: React.FC = () => {
                 titleClassName="text-5xl font-bold leading-relaxed"
                 descriptionClassName="text-lg leading-relaxed"
             />
-            <main className={"flex-grow"}>
+            <main className={'flex-grow'}>
                 <SearchBar
                     searchQuery={searchQuery}
-                    onUserInput={(value: string) => dispatch(setSearchQuery(value))}
+                    onUserInput={(value: string) =>
+                        dispatch(setSearchQuery(value))
+                    }
                 />
                 {isLoading ? (
                     <p className="text-center p-4">Loading plants...</p>

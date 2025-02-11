@@ -45,6 +45,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                 placeholder={placeholder}
                 aria-labelledby="search-bar-label"
                 data-testid="search-bar-input"
+                autoComplete="off"
             ></input>
         </div>
     );
