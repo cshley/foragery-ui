@@ -1,20 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import { useDispatch } from 'react-redux';
-
 import { fetchMockCardData } from './mockCardDataApi.ts';
-import { setCards } from './cardSlice.ts';
-
-import { AppDispatch } from '../../store/store.ts';
-import { CardData } from './CardTypes.ts';
 
 export const useFetchMockCardData = () => {
-    const dispatch = useDispatch<AppDispatch>();
-
-    return useQuery({
+    const { data, isLoading, error } = useQuery({
         queryKey: ['cards'],
-        queryFn: async () => {
-            const data: CardData[] = await fetchMockCardData();
-            dispatch(setCards(data));
-        },
+        queryFn: fetchMockCardData,
+        staleTime: 1000 * 60 * 5,
+        retry: 2,
     });
+
+    return { data, isLoading, error };
 };

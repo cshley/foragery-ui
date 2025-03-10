@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Header } from '../components/ui/Header.tsx';
@@ -11,7 +11,7 @@ import {
     selectSearchQuery,
 } from '../features/Cards/filteredCardsSelector.ts';
 import { useVersion } from '../features/Version/useVersion.ts';
-import { setSearchQuery } from '../features/Cards/cardSlice.ts';
+import { setCards, setSearchQuery } from '../features/Cards/cardSlice.ts';
 
 import { AppDispatch } from '../store/store.ts';
 import { CardData } from '../features/Cards/CardTypes.ts';
@@ -21,8 +21,14 @@ export const MainContainer: React.FC = () => {
     const filteredCards: CardData[] = useSelector(selectFilteredCards);
     const searchQuery: string = useSelector(selectSearchQuery);
 
-    const { isLoading } = useFetchMockCardData();
+    const { isLoading, data } = useFetchMockCardData();
     const version: string = useVersion();
+
+    useEffect(() => {
+        if (data) {
+            dispatch(setCards(data));
+        }
+    }, [data, dispatch]);
 
     return (
         <div className="flex flex-col min-h-screen w-1/2 mx-auto">
